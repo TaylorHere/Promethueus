@@ -18,11 +18,14 @@ def init_db():
 class words_space(Base):
     __tablename__ = 'words_space'
     id = Column(Integer, primary_key=True)
-    key = Column(String, nullable=True, unique=True)
+    key = Column(String, nullable=True)
+    tag = Column(String, nullable=True)
     count = Column(Integer, nullable=True)
 
-    def __init__(self, word=None):
+    def __init__(self, word=None, tag=None):
         self.key = word
+        self.tag = tag
+        self.count = 1
 
     def __str__(self):
         return self.key
